@@ -61,7 +61,7 @@ else:
 # Authorize and load the sheet
 client = gspread.authorize(creds)
 sheet = client.open_by_url(sheet_url)
-worksheet = sheet.worksheet("June")
+worksheet = sheet.worksheet("July")
 data = pd.DataFrame(worksheet.get_all_records())
 df = data.copy()
 
@@ -75,8 +75,8 @@ df = df.apply(
 color_sequence = px.colors.qualitative.Plotly
 
 # Get the reporting month:
-current_month = datetime(2025, 6, 1).strftime("%B")
-report_year = datetime(2025, 6, 1).strftime("%Y")
+current_month = datetime(2025, 7, 1).strftime("%B")
+report_year = datetime(2025, 7, 1).strftime("%Y")
 report = 'Outreach'
 # -------------------------------------------------
 # print(df)
@@ -376,7 +376,7 @@ group_pie=px.pie(
     textposition='auto',
     insidetextorientation='horizontal', 
     texttemplate='%{value}<br>(%{percent:.2%})',
-    hovertemplate='<b>%{label}</b>: %{value}<extra></extra>',
+    hovertemplate='%{label}: <b>%{value}</b><br>Percent: <b>%{percent:.2%}</b><extra></extra>',
 )
 
 # --------------------------- Care Task -------------------------- #
@@ -529,7 +529,7 @@ task_pie=px.pie(
     # textinfo='none',  # Hides all labels
     # textposition='none',  # Ensures nothing is placed inside or outside the pie
     # texttemplate=None,  # Optional, but reinforces no custom text
-    hovertemplate='<b>%{label}</b>: %{value}<extra></extra>',
+    hovertemplate='%{label}: <b>%{value}</b><br>Percent: <b>%{percent:.2%}</b><extra></extra>',
 )
 
 # --------------------------- Care Tags -------------------------- #
@@ -664,7 +664,7 @@ tag_pie=px.pie(
     # textinfo='none',  # Hides all labels
     # textposition='none',  # Ensures nothing is placed inside or outside the pie
     # texttemplate=None,  # Optional, but reinforces no custom text
-    hovertemplate='<b>%{label}</b>: %{value}<extra></extra>',
+    hovertemplate='%{label}: <b>%{value}</b><br>Percent: <b>%{percent:.2%}</b><extra></extra>',
 )
 
 # --------------------------- Collaborated Entity -------------------------- #
@@ -791,11 +791,11 @@ collab_pie=px.pie(
         color='black'
     )
 ).update_traces(
-    rotation=-10,
+    rotation=100,
     textposition='auto',
     insidetextorientation='horizontal', 
-    texttemplate='%{value}<br>(%{percent:.2%})',
-    hovertemplate='<b>%{label}</b>: %{value}<extra></extra>',
+    # texttemplate='%{value}<br>(%{percent:.2%})',
+    hovertemplate='%{label}: <b>%{value}</b><br>Percent: <b>%{percent:.2%}</b><extra></extra>',
 )
 
 
@@ -825,6 +825,7 @@ df['User'] = (
                 "antonio.montgomery" : "Antonio Montgomery",
                 "arianna.williams" : "Arianna Williams",
                 "carlos.bautista" : "Carlos Bautista",
+                "christi.freeman" : "Christi Freeman",
                 "" : "",
             })
     )
@@ -933,7 +934,7 @@ user_pie=px.pie(
     textposition='auto',
     insidetextorientation='horizontal', 
     texttemplate='%{value}<br>(%{percent:.2%})',
-    hovertemplate='<b>%{label}</b>: %{value}<extra></extra>',
+    hovertemplate='%{label}: <b>%{value}</b><br>Percent: <b>%{percent:.2%}</b><extra></extra>',
 )
 
 # ========================== DataFrame Table ========================== #
